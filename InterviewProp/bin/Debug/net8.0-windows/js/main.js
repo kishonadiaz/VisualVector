@@ -1,8 +1,8 @@
 ﻿import * as THREE from 'three';
 import WebGL from 'three/addons/capabilities/WebGL.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-import Stage from './Componets/stage.js';
-import Editor from './Componets/editor.js';
+import Stage from './Components/stage.js';
+import Editor from './Components/editor.js';
 import * as monaco from 'https://esm.sh/monaco-editor';
 import editorWorker from 'https://esm.sh/monaco-editor/esm/vs/editor/editor.worker?worker';
 import jsonWorker from 'https://esm.sh/monaco-editor/esm/vs/language/json/json.worker?worker';
@@ -10,6 +10,8 @@ import cssWorker from 'https://esm.sh/monaco-editor/esm/vs/language/css/css.work
 import htmlWorker from 'https://esm.sh/monaco-editor/esm/vs/language/html/html.worker?worker';
 import tsWorker from 'https://esm.sh/monaco-editor/esm/vs/language/typescript/ts.worker?worker';
 
+
+console.log(window)
 var editor = new Editor("editorcont",document.getElementById("run"));
 
 editor.editdisp();
@@ -46,12 +48,13 @@ const DirectionalLightf = (color, intensity, callback = () => { }) => {
 }
 
 if (WebGL.isWebGLAvailable()) {
+    console.log($)
     var maincont = document.getElementById("maincont")
     renderer = new THREE.WebGLRenderer({ antialias: true, canvas: canvas });
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.shadowMap.enabled = true;
     maincont.appendChild(renderer.domElement);
-    var stage = new Stage(scene, clock, camera,editor, renderer);
+    var stage = new Stage(scene, clock, camera, editor, renderer);
     stage.stagebgcolor(0xD3D3D3);
     const mesh = new THREE.Mesh(new THREE.PlaneGeometry(1000, 1000, 1, 1), new THREE.MeshPhongMaterial({ color: 0xcbcbcb }));
     mesh.rotation.x = - Math.PI / 2;
@@ -104,5 +107,4 @@ if (WebGL.isWebGLAvailable()) {
 } else {
     console.warn(WebGL.getWebGLErrorMessage());
 }
-var stage = new Stage();
 

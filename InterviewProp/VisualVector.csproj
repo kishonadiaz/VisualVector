@@ -9,10 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="bin\Debug\net8.0-windows\js\Componets\**" />
-    <EmbeddedResource Remove="bin\Debug\net8.0-windows\js\Componets\**" />
-    <None Remove="bin\Debug\net8.0-windows\js\Componets\**" />
-    <Page Remove="bin\Debug\net8.0-windows\js\Componets\**" />
+    <Compile Remove="InterviewProp.exe.WebView2\**" />
+    <EmbeddedResource Remove="InterviewProp.exe.WebView2\**" />
+    <None Remove="InterviewProp.exe.WebView2\**" />
+    <Page Remove="InterviewProp.exe.WebView2\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -35,8 +35,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="bin\Debug\net8.0-windows\js\Components\editor.js" />
-    <None Include="bin\Debug\net8.0-windows\js\Components\stage.js" />
+    <None Include="bin\Debug\net8.0-windows\js\Componets\editor.js" />
+    <None Include="bin\Debug\net8.0-windows\js\Componets\stage.js" />
     <None Include="bin\Debug\net8.0-windows\js\main.js" />
   </ItemGroup>
 

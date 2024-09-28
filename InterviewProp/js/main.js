@@ -21,6 +21,8 @@ const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1.0, 30000);
 camera.position.set(75, 20, 0);
 
+
+
 let clock, renderer, raycaster;
 let INTERSECTED;
 let theta = 0;
@@ -49,8 +51,8 @@ if (WebGL.isWebGLAvailable()) {
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.shadowMap.enabled = true;
     maincont.appendChild(renderer.domElement);
-    var stage = new Stage(scene, clock, camera, renderer);
-    stage.stagebgcolor(0xffffff);
+    var stage = new Stage(scene, clock, camera,editor, renderer);
+    stage.stagebgcolor(0xD3D3D3);
     const mesh = new THREE.Mesh(new THREE.PlaneGeometry(1000, 1000, 1, 1), new THREE.MeshPhongMaterial({ color: 0xcbcbcb }));
     mesh.rotation.x = - Math.PI / 2;
     mesh.receiveShadow = true;
@@ -67,9 +69,12 @@ if (WebGL.isWebGLAvailable()) {
     materialArrays.push(new THREE.MeshPhongMaterial({ color: 0x00ff00 }))
     var cube = new THREE.Mesh(geometry, materialArrays);
     cube.position.set(0, 55, 0);
-    stage.add(cube);
+   
+
+/*
+    stage.add(cube);*/
     stage.add(AmbientLightf(0xffffff,1));
-    stage.add(HemisphereLights(0xfffff,0xfffff,9));
+    stage.add(HemisphereLights(0xffffff,0xffffff,9));
     stage.add(DirectionalLightf(0xffffff, 1, (dirLight) => {
         dirLight.position.set(- 3, 10, - 10);
         dirLight.castShadow = true;
@@ -87,6 +92,7 @@ if (WebGL.isWebGLAvailable()) {
     // controls.minDistance = 500;
     // controls.maxDistance = 1500;
     controls.update();
+
 
 
     controls.addEventListener('change', function () {

@@ -41,6 +41,7 @@ namespace InterviewProp
     public partial class MainWindow : Window
     {
 
+
         public MainWindow()
         {
             InitializeComponent();
@@ -50,10 +51,17 @@ namespace InterviewProp
 
         private async void Main_onload(object sender, RoutedEventArgs e)
         {
+
+            
             CoreWebView2EnvironmentOptions options = new CoreWebView2EnvironmentOptions("--disable-web-security");
             CoreWebView2Environment environment = await CoreWebView2Environment.CreateAsync("", "", options);
             await WebView.EnsureCoreWebView2Async(environment);
+            string assemblyName = System.Reflection.Assembly.GetExecutingAssembly().GetName().Name;
 
+
+            string startupPath = System.IO.Path.Combine(Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).Parent.Parent.Parent.FullName+"/");
+            var path = new Uri(startupPath, UriKind.Absolute);
+            Debug.WriteLine(path.AbsoluteUri);
 
             WebView.CoreWebView2.Settings.AreHostObjectsAllowed = true;
             WebView.CoreWebView2.Settings.IsScriptEnabled = true;
@@ -61,8 +69,9 @@ namespace InterviewProp
             WebView.CoreWebView2.SetVirtualHostNameToFolderMapping("interview.project", Environment.CurrentDirectory, CoreWebView2HostResourceAccessKind.Allow);
 
             WebView.Source = new Uri("https://interview.project/interviewThreejs.html");
+           // WebView.Source = new Uri(path.AbsoluteUri);
 
-           
+
             Debug.WriteLine(WebView.Source.ToString());
             WebView.CoreWebView2.WebResourceResponseReceived += CoreWebView2_WebResourceResponseReceived;
             WebView.CoreWebView2.WebMessageReceived += CoreWebView2_WebMessageReceived;
@@ -147,20 +156,7 @@ namespace InterviewProp
                                     item = item.Replace(a, "");
                             }
                         }
-                       /* if (item.IndexOf("(") < item.IndexOf(item2) && item.IndexOf(")") > item.IndexOf(item2))
-                        {
-                            item = item.Replace(item2, "");
-                        }*/
-                        /*if (item.IndexOf("(") < item.IndexOf(")"))
-                        {
-                            if (!item.Contains(item2))
-                            {
-                                Debug.WriteLine(item.Substring(Math.Abs((item.IndexOf(',') !=-1) ? item.IndexOf(",") + 1 : item.IndexOf("(") + 1)));
-                                var a = item.Substring((item.IndexOf(",") + 1 | item.IndexOf("(") + 1), (Math.Abs((item.IndexOf(",") + 1 | item.IndexOf("(") + 1) - (item.IndexOf(")")))));
-                                //if (!a.IsNullOrEmpty())
-                                    //item = item.Replace(a, "");
-                            }
-                        }*/
+                      
                     }
                     if (item.IndexOf("<") > item.IndexOf("Dictionary"))
                     {
@@ -212,12 +208,7 @@ namespace InterviewProp
                     }
 
                 }
-           /*     for(var i=0; i < item.Length; i++)
-                {   
-                    if(item.IndexOf("window.")+1 == item.IndexOf(" ")){
-                        Debug.WriteLine("here");
-                    }
-                }*/
+      
                 foreach (var item2 in scope)
                 {
                     while (item.ToString().Contains(item2))
@@ -351,24 +342,7 @@ namespace InterviewProp
                 item = item.Insert(item.LastIndexOf(")"), ")");
             }
 
-            //while (item.IndexOf("(") != -1 && item.IndexOf("(")  < item.LastIndexOf(")") && item.LastIndexOf(")") != -1 && leftp.Count == rightp.Count)
-            /* {
-
-                 if(item.IndexOf("(") != -1)
-                 {
-                     leftp.Add(item.Substring(item.IndexOf("(")));
-                 }
-                 if (item.IndexOf(")") != -1)
-                 {
-                     rightp.Add(item.Substring(item.IndexOf(")")));
-                 }
-                 if (leftp.Count != rightp.Count) {
-                     item = item.Insert(item.LastIndexOf(")"), ")");
-                 }
-                 Debug.WriteLine(leftp.Count);
-                 Debug.WriteLine(rightp.Count);
-
-             }*/
+            
             var k = Array.Empty<string>();
             if (animebool.Contains(true))
             {
@@ -458,13 +432,7 @@ namespace InterviewProp
                 }
             }
             
-            /*while(item.Contains("/#") && item.Contains("#/"))
-            {
-                if(item.IndexOf("#/") < item.IndexOf("}"))
-                {
-                    Debug.WriteLine(item.Substring(item.IndexOf("#/\n"),item.LastIndexOf("}")));
-                }
-            }*/
+           
 
             return item;
 
@@ -541,6 +509,9 @@ namespace InterviewProp
 
 
             }
+            List<bool> isconstructor = new List<bool>();
+            int flagcount = 0;
+          
             if (!str.Contains("Dictionary"))
             {
                 foreach (var item2 in syntax)
@@ -565,33 +536,135 @@ namespace InterviewProp
                                         str = str.Replace(item2, "").Trim();*/
 
                                     }
-                                    if (str.IndexOf((item as ClassDeclarationSyntax).Identifier.ToString()+"()\r\n {") < str.IndexOf("}"))
-                                    {
+                                    //if (str.IndexOf((item as ClassDeclarationSyntax).Identifier.ToString()+"()\r\n {") < str.IndexOf("}"))
+                                    //{
                                        
                                        
-                                       /* if (str.LastIndexOf("}") > str.IndexOf("}"))
-                                            continue;*/
-                                        //var sf = str.Substring((str.IndexOf(">") + 1), (Math.Abs((str.IndexOf(">") + 1) - (str.IndexOf(")")))));
-                                        Debug.WriteLine((item as ClassDeclarationSyntax).Identifier.ToString() + "()");
-                                        str = str.Replace((item as ClassDeclarationSyntax).Identifier.ToString() + "()", "");
+                                    //   /* if (str.LastIndexOf("}") > str.IndexOf("}"))
+                                    //        continue;*/
+                                    //    //var sf = str.Substring((str.IndexOf(">") + 1), (Math.Abs((str.IndexOf(">") + 1) - (str.IndexOf(")")))));
+                                    //    Debug.WriteLine((item as ClassDeclarationSyntax).Identifier.ToString() + "()");
+                                    //    str = str.Replace((item as ClassDeclarationSyntax).Identifier.ToString() + "()", "");
                                       
 
-                                            str = str.Replace("{", "");
+                                    //        str = str.Replace("{", "");
                                  
-                                            str = str.Replace("}", "");
+                                    //        str = str.Replace("}", "");
 
-                                    }
+                                    //}
                                     
-                                    str = str.Replace((item as ClassDeclarationSyntax).Identifier.ToString(), "");
+                                    //str = str.Replace((item as ClassDeclarationSyntax).Identifier.ToString(), "");
 
                                    
                                 }
-                                if (!str.Contains((item as ClassDeclarationSyntax).Identifier.ToString() + "()\n{"))
+                                if (!str.Contains((item as ClassDeclarationSyntax).Identifier.ToString() + "()\n"))
                                 {
-                                    str = str.Replace("class", "var " + (item as ClassDeclarationSyntax).Identifier.ToString() + "=new function(){");
+                                    if (str.IndexOf((item as ClassDeclarationSyntax).Identifier.ToString()) < str.IndexOf("(") && str.IndexOf(")\n{") < str.IndexOf("}") )
+                                    {
+                                        if(str.IndexOf("(") < str.IndexOf("}"))
+                                        {
+                                            isconstructor.Add(true);
+                                            flagcount++;
+                                            //break;
+                                        }
+                                        /*var sf = str.ToCharArray();
+                                        for (int i = 0;i < str.Length; i++)
+                                        {
+                                            for(int j =0; j < str.Length; j++)
+                                            {
+                                               // Debug.WriteLine(str[j]);
+                                                if (str[j] == '{' || str[j] == '}')
+                                                {
+                                                    sf[j] = ' ';
+
+                                                    
+                                                }
+
+                                            }
+                                           
+                                            
+                                        }*/
+                                        /*for (int i = 0; i < sf.Length; i++)
+                                        {
+                                            Debug.WriteLine(sf[i].ToString());
+
+
+                                        }*/
+                                     
+
+                                    }
+                                    var tempstr = "";
+                                    int pcaounterf = 0;
+                                    int pcaounterl = 0;
+                                    int pinit = 0;
+                                    var pDict = new Dictionary<int,Dictionary<string,Dictionary<string,int>>>();
+                                    if(str.Contains((item as ClassDeclarationSyntax).Identifier.ToString() + "(")){
+                                        /*str = str.Replace("{", "");
+                                        str = str.Replace("}", "");*/
+                                        for(var i= str.IndexOf("{"); i < str.IndexOf("}"); i++)
+                                        {
+                                            Debug.WriteLine(i);
+                                           
+                                            if (str[i] == '{')
+                                            {
+                                                pDict[pinit]["fp"+pinit] = new Dictionary<string, int> { { "fp", i } };
+                                                pcaounterf++;
+                                            }
+                                            if (str[i] == '}')
+                                            {
+                                                pDict[pinit]["fe" + pinit] = new Dictionary<string, int> { { "fe", i } };
+                                                pcaounterl++;
+                                            }
+                                            if (pcaounterf == pcaounterl)
+                                            {
+                                                
+                                                pinit++;
+                                            }
+
+
+                                        }
+
+                                        for(var i = 0; i < pinit; i++)
+                                        {
+
+                                        }
+                                        
+                                        Debug.WriteLine(str);
+                                    }
+                                    str = str.Replace((item as ClassDeclarationSyntax).Identifier.ToString(), "");
+                                    /*for (int item3 =  0; item3 <  isconstructor.Count; item3++)
+                                    {
+                                        if (isconstructor[flagcount-1] == true)
+                                        {
+                                            str = str.Replace("{", "");
+                                            str = str.Replace("}", "");
+                                            isconstructor[flagcount-1] = false;
+                                            break;
+                                        }
+
+                                    }*/
+                                    string ss = "";
+                                    for(int i = str.IndexOf("(")+1; i < str.IndexOf(")"); i++)
+                                    {
+                                        ss += str[i];
+                                        if( i >= str.IndexOf(")"))
+                                        {
+                                            break;
+                                        }
+                                    }
+                                   
+                                    str = str.Replace("(" + ss + ")", "");
+                                    
+                                    for(int i = 0; i < syntax.Length; i++) 
+                                    {
+                                        ss = ss.Replace(syntax[i], "");
+                                        
+                                    }
+                                    str = str.Replace("class", "window." + (item as ClassDeclarationSyntax).Identifier.ToString() + "=new function("+ss+")");
                                 }
 
-                                str += "}";
+
+                                
 
                             }
                             
@@ -611,8 +684,14 @@ namespace InterviewProp
                         str = str.Replace(item2, "");
                     }
                 }
+                //str = str.Replace(str, "window.");
+                while (str.Contains(". "))
+                {
+                    str = str.Replace(". ", ".");
+                }
+                Debug.WriteLine(str);
             }
-
+            
 
             return str.TrimStart().Trim();
 
@@ -669,8 +748,11 @@ class Cat
     int legs = 4;
     string color = ""orange"";
     
-    Cat()
+    Cat(int test, string jets)
     {
+        int x = 0;
+        float y  = 0.0
+        int test = test
     }
     
     public bool isPet(){
@@ -709,7 +791,8 @@ public decimal BuyFruit(Dictionary<string,object> fruitType)
             var dataarg = CSharpSyntaxTree.ParseText(data);
 
             /*var syntaxRoot = tree.GetRoot();*/
-            var members = dataarg.GetRoot().DescendantNodes().OfType<MemberDeclarationSyntax>();
+            //var members = dataarg.GetRoot().DescendantNodes().OfType<MemberDeclarationSyntax>();
+            var members = codeToCompile.GetRoot().DescendantNodes().OfType<MemberDeclarationSyntax>();
             var strarr = new ArrayList();
             string outs = "";
             foreach (var member in members)
@@ -733,6 +816,7 @@ public decimal BuyFruit(Dictionary<string,object> fruitType)
                     var d = CSharpToJS(s);
 
                     Debug.WriteLine("global: " + d);
+                    outs += d;
                     /*Debug.WriteLine("Class: " + classs);*/
                 }
                     
