@@ -20,10 +20,13 @@ VisualVector is a 3D visual teaching aid application designed to help individual
 - **Teachers Version 
 - **how it looks
 
+- With is application it allows C# code to be used to create 3d Objects in the Viewer
 ![Alt text]( ./assets/begin.gif "Looks")
 
+- Here is an example of code adding in to editor and 3d Object 
 ![Alt text]( ./assets/editor.gif "Editor")
 
+- Showing 3d Object moving after code is updated 
 ![Alt text]( ./assets/action.gif "Editor Action")
 
 
