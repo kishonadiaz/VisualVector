@@ -15,8 +15,17 @@ VisualVector is a 3D visual teaching aid application designed to help individual
 - **Three.js**: A powerful JavaScript library that renders 3D graphics directly in the browser.
 - **Microsoft Monaco Editor**: The same editor used in Visual Studio Code, providing rich coding support and live feedback.
 
-##Images 
-![Alt text]( ./assets/begin.gif "a title")
+## Images 
+
+- **Teachers Version 
+- **how it looks
+
+![Alt text]( ./assets/begin.gif "Looks")
+
+![Alt text]( ./assets/editor.gif "Editor")
+
+![Alt text]( ./assets/action.gif "Editor Action")
+
 
 ## Getting Started
 
