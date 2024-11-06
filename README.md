@@ -16,7 +16,7 @@ VisualVector is a 3D visual teaching aid application designed to help individual
 - **Microsoft Monaco Editor**: The same editor used in Visual Studio Code, providing rich coding support and live feedback.
 
 ##Images 
-![Alt text]( ./assets/Recording%20%2024-08-06%20%165311.gif "a title")
+![Alt text]( ./assets/begin.gif "a title")
 
 ## Getting Started
 
