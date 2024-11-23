@@ -24,11 +24,11 @@ VisualVector is a 3D visual teaching aid application designed to help individual
 ![Alt text]( https://github.com/kishonadiaz/VisualVector/blob/eda5168e359ec3389d9d58f9edef1930fb230d54/assets/begin.gif "Looks")
 
 - Here is an example of code adding in to editor and 3d Object 
-![Alt text]( ./assets/editor.gif "Editor")
+![Alt text](https://github.com/kishonadiaz/VisualVector/blob/eda5168e359ec3389d9d58f9edef1930fb230d54/assets/editor.gif "Editor")
 
 - Showing 3d Object moving after code is updated 
 - 
-![Alt text]( ./assets/action.gif "Editor Action")
+![Alt text]( https://github.com/kishonadiaz/VisualVector/blob/eda5168e359ec3389d9d58f9edef1930fb230d54/assets/action.gif "Editor Action")
 
 
 ## Getting Started
